@@ -5,6 +5,7 @@
         'dso': {},
         'http': {}
     };
+    var include = 0;
     var fs = require('fs');
     var globsync = require('glob').sync;
 }}
@@ -240,7 +241,8 @@ ngxHttpDirective
         ast['http'][$1] = $2;
     }
     | ngxInclude {
-        ast['http']['include'] = $1;
+        ast['http']['include'+include] = $1;
+        include = include + 1;
     }
     ;
 
