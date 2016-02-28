@@ -11,6 +11,7 @@ int                         "-"?(?:[0-9]|[1-9][0-9]+)
 netmask                     ([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+\/{int})
 domain                      ("localhost"|[\.a-zA-Z0-9][\-a-zA-Z0-9]*\.[\.\-a-zA-Z0-9]*[a-zA-Z0-9]?|[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)(?:\:{int})?
 path                        [\/A-Za-z_\-0-9\.\*]+
+dso                         [.*]\.so$
 %%
 
 \s+                         /* skip whitespace */
@@ -27,9 +28,11 @@ path                        [\/A-Za-z_\-0-9\.\*]+
 "pid" return 'pid';
 "events" return 'events';
 "accept_mutex" return 'accept_mutex';
-'worker_connections' return 'worker_connections';
-'use' return 'use';
+"worker_connections" return 'worker_connections';
+"use" return 'use';
 epoll|poll|select return 'iomethod';
+"dso" return 'dso';
+"load" return 'load';
 
 // logical literals
 "null"                      return 'NULL';
@@ -43,8 +46,9 @@ epoll|poll|select return 'iomethod';
 //type
 [0-9]+(?=\b)                return 'NUMBER';
 \"(?:[^\"]|\\\")*\"         return 'STRING';
-[a-zA-Z0-9]+                return 'LITERAL';
+[a-zA-Z0-9_\.]+             return 'LITERAL';
 {path}                      return 'PATH';
+
 <<EOF>>                     return 'EOF';
 
 /lex
@@ -82,6 +86,7 @@ ngxRootDirective
         ast['error_log'] = $2;
     }
     | ngxEventsBlock
+    | ngxDsoBlock
     ;
 
 ngxEventsBlock
@@ -113,6 +118,24 @@ ngxEventsDirective
             ast['events'] = {};
         }
         ast['events']['use'] = $2;
+    }
+    ;
+
+ngxDsoBlock
+    : dso '{' ngxDsoDirectiveList '}'
+    ;
+
+ngxDsoDirectiveList
+    : ngxDsoDirective
+    | ngxDsoDirectiveList ngxDsoDirective
+    ;
+
+ngxDsoDirective
+    : load LITERAL ';' {
+        if (!ast['dso']) {
+            ast['dso'] = {};
+        }
+        ast['dso'][$2] = true;
     }
     ;
 
