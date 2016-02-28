@@ -5,6 +5,8 @@
         'dso': {},
         'http': {}
     };
+    var fs = require('fs');
+    var globsync = require('glob').sync;
 }}
 /* lexical grammar */
 %lex
@@ -14,7 +16,7 @@ esc                         "\\"
 int                         "-"?(?:[0-9]|[1-9][0-9]+)
 netmask                     ([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+\/{int})
 domain                      ("localhost"|[\.a-zA-Z0-9][\-a-zA-Z0-9]*\.[\.\-a-zA-Z0-9]*[a-zA-Z0-9]?|[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)(?:\:{int})?
-path                        [\/A-Za-z_\-0-9\.\*]+
+literal                     [\/A-Za-z_\-0-9\.\*]+
 dso                         [.*]\.so$
 time                        \d+[smdy]
 size                        \d+[kmg]
@@ -63,6 +65,7 @@ epoll|poll|select return 'iomethod';
 "large_client_header_buffers" return 'large_client_header_buffers';
 "proxy_connect_timeout" return 'proxy_connect_timeout';
 "proxy_read_timeout" return 'proxy_read_timeout';
+"include" return 'include';
 
 // logical literals
 "null"                      return 'NULL';
@@ -78,8 +81,7 @@ epoll|poll|select return 'iomethod';
 \"(?:[^\"]|\\\")*\"         return 'STRING';
 {time}                      return 'TIME';
 {size}                      return 'SIZE';
-[a-zA-Z0-9_\.]+             return 'LITERAL';
-{path}                      return 'PATH';
+{literal}                   return 'LITERAL';
 
 <<EOF>>                     return 'EOF';
 
@@ -101,20 +103,18 @@ ngxRootDirectiveList
 
 ngxRootDirective
     : user LITERAL LITERAL ';' {
-        ast['user'] = $2;
-        ast['group'] = $3;
+        ast['user'] = $2 + ' ' + $3;
     }
     | user LITERAL ';' {
-        ast['user'] = $2;
-        ast['group'] = 'nobody';
+        ast['user'] = $2 + ' nobody' ;
     }
     | worker_porcess ngxNumber ';' {
         ast['worker_porcess'] = $2;
     }
-    | error_log PATH ';' {
+    | error_log LITERAL ';' {
         ast['error_log'] = $2;
     }
-    | pid PATH ';' {
+    | pid LITERAL ';' {
         ast['error_log'] = $2;
     }
     | ngxEventsBlock
@@ -239,6 +239,15 @@ ngxHttpDirective
     | proxy_read_timeout ngxTime ';' {
         ast['http'][$1] = $2;
     }
+    | ngxInclude {
+        ast['http']['include'] = $1;
+    }
+    ;
+
+ngxInclude
+    : include  LITERAL ';' {
+        $$ = $2;
+    }
     ;
 
 ngxNumber
@@ -247,10 +256,10 @@ ngxNumber
 
 ngxOnOFF
     : ON {
-        $$ = 'ON';
+        $$ = 'on';
     }
     | OFF {
-        $$ = 'OFF';
+        $$ = 'off';
     }
     ;
 
