@@ -72,12 +72,12 @@
   }
 */
 var ncp = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,4],$V1=[1,5],$V2=[1,6],$V3=[1,7],$V4=[1,10],$V5=[1,11],$V6=[5,7,10,12,14,17,27],$V7=[1,18],$V8=[1,17],$V9=[1,15],$Va=[1,19],$Vb=[9,13,31,32,33],$Vc=[1,32],$Vd=[1,33],$Ve=[1,34],$Vf=[1,37],$Vg=[20,22,24,25],$Vh=[20,30];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,4],$V1=[1,5],$V2=[1,6],$V3=[1,7],$V4=[1,11],$V5=[1,12],$V6=[1,13],$V7=[5,7,10,12,14,18,28,33],$V8=[1,20],$V9=[1,19],$Va=[1,17],$Vb=[1,21],$Vc=[9,13,32,42,43],$Vd=[1,35],$Ve=[1,36],$Vf=[1,37],$Vg=[1,40],$Vh=[1,43],$Vi=[1,44],$Vj=[1,45],$Vk=[1,46],$Vl=[1,47],$Vm=[1,48],$Vn=[21,23,25,26],$Vo=[1,53],$Vp=[1,54],$Vq=[21,31],$Vr=[21,36,37,38,39,40,41];
 var parser = {trace: function trace() { },
 yy: {},
-symbols_: {"error":2,"ngx":3,"ngxRootDirectiveList":4,"EOF":5,"ngxRootDirective":6,"user":7,"ngxValue":8,";":9,"worker_porcess":10,"ngxNumber":11,"error_log":12,"PATH":13,"pid":14,"ngxEventsBlock":15,"ngxDsoBlock":16,"events":17,"{":18,"ngxEventsDirectiveList":19,"}":20,"ngxEventsDirective":21,"accept_mutex":22,"ngxOnOFF":23,"worker_connections":24,"use":25,"iomethod":26,"dso":27,"ngxDsoDirectiveList":28,"ngxDsoDirective":29,"load":30,"LITERAL":31,"STRING":32,"NUMBER":33,"ON":34,"OFF":35,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"EOF",7:"user",9:";",10:"worker_porcess",12:"error_log",13:"PATH",14:"pid",17:"events",18:"{",20:"}",22:"accept_mutex",24:"worker_connections",25:"use",26:"iomethod",27:"dso",30:"load",31:"LITERAL",32:"STRING",33:"NUMBER",34:"ON",35:"OFF"},
-productions_: [0,[3,2],[4,1],[4,2],[6,4],[6,3],[6,3],[6,3],[6,3],[6,1],[6,1],[15,4],[19,1],[19,2],[21,3],[21,3],[21,3],[16,4],[28,1],[28,2],[29,3],[8,1],[8,1],[8,1],[8,1],[11,1],[23,1],[23,1]],
+symbols_: {"error":2,"ngx":3,"ngxRootDirectiveList":4,"EOF":5,"ngxRootDirective":6,"user":7,"ngxValue":8,";":9,"worker_porcess":10,"ngxNumber":11,"error_log":12,"PATH":13,"pid":14,"ngxEventsBlock":15,"ngxDsoBlock":16,"ngxHttpBlock":17,"events":18,"{":19,"ngxEventsDirectiveList":20,"}":21,"ngxEventsDirective":22,"accept_mutex":23,"ngxOnOFF":24,"worker_connections":25,"use":26,"iomethod":27,"dso":28,"ngxDsoDirectiveList":29,"ngxDsoDirective":30,"load":31,"LITERAL":32,"http":33,"ngxHttpDirectiveList":34,"ngxHttpDirective":35,"sendfile":36,"tcp_nopush":37,"tcp_nodelay":38,"server_tokens":39,"server_info":40,"server_tag":41,"STRING":42,"NUMBER":43,"ON":44,"OFF":45,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"EOF",7:"user",9:";",10:"worker_porcess",12:"error_log",13:"PATH",14:"pid",18:"events",19:"{",21:"}",23:"accept_mutex",25:"worker_connections",26:"use",27:"iomethod",28:"dso",31:"load",32:"LITERAL",33:"http",36:"sendfile",37:"tcp_nopush",38:"tcp_nodelay",39:"server_tokens",40:"server_info",41:"server_tag",42:"STRING",43:"NUMBER",44:"ON",45:"OFF"},
+productions_: [0,[3,2],[4,1],[4,2],[6,4],[6,3],[6,3],[6,3],[6,3],[6,1],[6,1],[6,1],[15,4],[20,1],[20,2],[22,3],[22,3],[22,3],[16,4],[29,1],[29,2],[30,3],[17,4],[34,1],[34,2],[35,3],[35,3],[35,3],[35,3],[35,3],[35,3],[8,1],[8,1],[8,1],[8,1],[11,1],[24,1],[24,1]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -110,17 +110,9 @@ case 7: case 8:
         ast['error_log'] = $$[$0-1];
     
 break;
-case 11:
+case 12:
 
         this.$ = $$[$0-1];
-    
-break;
-case 14:
-
-        if (!ast['events']) {
-            ast['events'] = {};
-        }
-        ast['events']['accept_mutex'] = $$[$0-1];
     
 break;
 case 15:
@@ -128,7 +120,7 @@ case 15:
         if (!ast['events']) {
             ast['events'] = {};
         }
-        ast['events']['worker_connections'] = $$[$0-1];
+        ast['events']['accept_mutex'] = $$[$0-1];
     
 break;
 case 16:
@@ -136,10 +128,18 @@ case 16:
         if (!ast['events']) {
             ast['events'] = {};
         }
+        ast['events']['worker_connections'] = $$[$0-1];
+    
+break;
+case 17:
+
+        if (!ast['events']) {
+            ast['events'] = {};
+        }
         ast['events']['use'] = $$[$0-1];
     
 break;
-case 20:
+case 21:
 
         if (!ast['dso']) {
             ast['dso'] = {};
@@ -147,23 +147,31 @@ case 20:
         ast['dso'][$$[$0-1]] = true;
     
 break;
-case 25:
+case 25: case 26: case 27: case 28: case 29: case 30:
+
+        if (!ast['http']) {
+            ast['http'] = {};
+        }
+        ast['http'][$$[$0-2]] = $$[$0-1];
+    
+break;
+case 35:
 this.$ = Number(yytext);
 break;
-case 26:
+case 36:
 
         this.$ = 'ON';
     
 break;
-case 27:
+case 37:
 
         this.$ = 'OFF';
     
 break;
 }
 },
-table: [{3:1,4:2,6:3,7:$V0,10:$V1,12:$V2,14:$V3,15:8,16:9,17:$V4,27:$V5},{1:[3]},{5:[1,12],6:13,7:$V0,10:$V1,12:$V2,14:$V3,15:8,16:9,17:$V4,27:$V5},o($V6,[2,2]),{8:14,11:16,13:$V7,31:$V8,32:$V9,33:$Va},{11:20,33:$Va},{13:[1,21]},{13:[1,22]},o($V6,[2,9]),o($V6,[2,10]),{18:[1,23]},{18:[1,24]},{1:[2,1]},o($V6,[2,3]),{8:25,9:[1,26],11:16,13:$V7,31:$V8,32:$V9,33:$Va},o($Vb,[2,21]),o($Vb,[2,22]),o($Vb,[2,23]),o($Vb,[2,24]),o($Vb,[2,25]),{9:[1,27]},{9:[1,28]},{9:[1,29]},{19:30,21:31,22:$Vc,24:$Vd,25:$Ve},{28:35,29:36,30:$Vf},{9:[1,38]},o($V6,[2,5]),o($V6,[2,6]),o($V6,[2,7]),o($V6,[2,8]),{20:[1,39],21:40,22:$Vc,24:$Vd,25:$Ve},o($Vg,[2,12]),{23:41,34:[1,42],35:[1,43]},{11:44,33:$Va},{26:[1,45]},{20:[1,46],29:47,30:$Vf},o($Vh,[2,18]),{31:[1,48]},o($V6,[2,4]),o($V6,[2,11]),o($Vg,[2,13]),{9:[1,49]},{9:[2,26]},{9:[2,27]},{9:[1,50]},{9:[1,51]},o($V6,[2,17]),o($Vh,[2,19]),{9:[1,52]},o($Vg,[2,14]),o($Vg,[2,15]),o($Vg,[2,16]),o($Vh,[2,20])],
-defaultActions: {12:[2,1],42:[2,26],43:[2,27]},
+table: [{3:1,4:2,6:3,7:$V0,10:$V1,12:$V2,14:$V3,15:8,16:9,17:10,18:$V4,28:$V5,33:$V6},{1:[3]},{5:[1,14],6:15,7:$V0,10:$V1,12:$V2,14:$V3,15:8,16:9,17:10,18:$V4,28:$V5,33:$V6},o($V7,[2,2]),{8:16,11:18,13:$V8,32:$V9,42:$Va,43:$Vb},{11:22,43:$Vb},{13:[1,23]},{13:[1,24]},o($V7,[2,9]),o($V7,[2,10]),o($V7,[2,11]),{19:[1,25]},{19:[1,26]},{19:[1,27]},{1:[2,1]},o($V7,[2,3]),{8:28,9:[1,29],11:18,13:$V8,32:$V9,42:$Va,43:$Vb},o($Vc,[2,31]),o($Vc,[2,32]),o($Vc,[2,33]),o($Vc,[2,34]),o($Vc,[2,35]),{9:[1,30]},{9:[1,31]},{9:[1,32]},{20:33,22:34,23:$Vd,25:$Ve,26:$Vf},{29:38,30:39,31:$Vg},{34:41,35:42,36:$Vh,37:$Vi,38:$Vj,39:$Vk,40:$Vl,41:$Vm},{9:[1,49]},o($V7,[2,5]),o($V7,[2,6]),o($V7,[2,7]),o($V7,[2,8]),{21:[1,50],22:51,23:$Vd,25:$Ve,26:$Vf},o($Vn,[2,13]),{24:52,44:$Vo,45:$Vp},{11:55,43:$Vb},{27:[1,56]},{21:[1,57],30:58,31:$Vg},o($Vq,[2,19]),{32:[1,59]},{21:[1,60],35:61,36:$Vh,37:$Vi,38:$Vj,39:$Vk,40:$Vl,41:$Vm},o($Vr,[2,23]),{24:62,44:$Vo,45:$Vp},{24:63,44:$Vo,45:$Vp},{24:64,44:$Vo,45:$Vp},{24:65,44:$Vo,45:$Vp},{24:66,44:$Vo,45:$Vp},{24:67,44:$Vo,45:$Vp},o($V7,[2,4]),o($V7,[2,12]),o($Vn,[2,14]),{9:[1,68]},{9:[2,36]},{9:[2,37]},{9:[1,69]},{9:[1,70]},o($V7,[2,18]),o($Vq,[2,20]),{9:[1,71]},o($V7,[2,22]),o($Vr,[2,24]),{9:[1,72]},{9:[1,73]},{9:[1,74]},{9:[1,75]},{9:[1,76]},{9:[1,77]},o($Vn,[2,15]),o($Vn,[2,16]),o($Vn,[2,17]),o($Vq,[2,21]),o($Vr,[2,25]),o($Vr,[2,26]),o($Vr,[2,27]),o($Vr,[2,28]),o($Vr,[2,29]),o($Vr,[2,30])],
+defaultActions: {14:[2,1],53:[2,36],54:[2,37]},
 parseError: function parseError(str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -648,9 +656,9 @@ case 0:/* skip whitespace */
 break;
 case 1:/* skip comment */
 break;
-case 2:return 18;
+case 2:return 19;
 break;
-case 3:return 20;
+case 3:return 21;
 break;
 case 4:return 9;
 break;
@@ -664,48 +672,62 @@ case 8:return 12;
 break;
 case 9:return 14;
 break;
-case 10:return 17;
+case 10:return 18;
 break;
-case 11:return 22;
+case 11:return 23;
 break;
-case 12:return 24;
+case 12:return 25;
 break;
-case 13:return 25;
+case 13:return 26;
 break;
-case 14:return 26;
+case 14:return 27;
 break;
-case 15:return 27;
+case 15:return 28;
 break;
-case 16:return 30;
+case 16:return 31;
 break;
-case 17:return 'NULL';
+case 17:return 33;
 break;
-case 18:return 'ANY';
+case 18:return 36;
 break;
-case 19:return 'ALL';
+case 19:return 37;
 break;
-case 20:return 34;
+case 20:return 38;
 break;
-case 21:return 35;
+case 21:return 39;
 break;
-case 22:return 'TRUE';
+case 22:return 40;
 break;
-case 23:return 'FALSE';
+case 23:return 41;
 break;
-case 24:return 33;
+case 24:return 'NULL';
 break;
-case 25:return 32;
+case 25:return 'ANY';
 break;
-case 26:return 31;
+case 26:return 'ALL';
 break;
-case 27:return 13;
+case 27:return 44;
 break;
-case 28:return 5;
+case 28:return 45;
+break;
+case 29:return 'TRUE';
+break;
+case 30:return 'FALSE';
+break;
+case 31:return 43;
+break;
+case 32:return 42;
+break;
+case 33:return 32;
+break;
+case 34:return 13;
+break;
+case 35:return 5;
 break;
 }
 },
-rules: [/^(?:\s+)/,/^(?:#[^\n]*)/,/^(?:\{)/,/^(?:\})/,/^(?:;)/,/^(?:user\b)/,/^(?:worker_processes\b)/,/^(?:worker_cpu_affinity\b)/,/^(?:error_log\b)/,/^(?:pid\b)/,/^(?:events\b)/,/^(?:accept_mutex\b)/,/^(?:worker_connections\b)/,/^(?:use\b)/,/^(?:epoll|poll|select\b)/,/^(?:dso\b)/,/^(?:load\b)/,/^(?:null\b)/,/^(?:any\b)/,/^(?:all\b)/,/^(?:on\b)/,/^(?:off\b)/,/^(?:true\b)/,/^(?:false\b)/,/^(?:[0-9]+(?=\b))/,/^(?:"(?:[^\"]|\\")*")/,/^(?:[a-zA-Z0-9_\.]+)/,/^(?:([\/A-Za-z_\-0-9\.\*]+))/,/^(?:$)/],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28],"inclusive":true}}
+rules: [/^(?:\s+)/,/^(?:#[^\n]*)/,/^(?:\{)/,/^(?:\})/,/^(?:;)/,/^(?:user\b)/,/^(?:worker_processes\b)/,/^(?:worker_cpu_affinity\b)/,/^(?:error_log\b)/,/^(?:pid\b)/,/^(?:events\b)/,/^(?:accept_mutex\b)/,/^(?:worker_connections\b)/,/^(?:use\b)/,/^(?:epoll|poll|select\b)/,/^(?:dso\b)/,/^(?:load\b)/,/^(?:http\b)/,/^(?:sendfile\b)/,/^(?:tcp_nopush\b)/,/^(?:tcp_nodelay\b)/,/^(?:server_tokens\b)/,/^(?:server_info\b)/,/^(?:server_tag\b)/,/^(?:null\b)/,/^(?:any\b)/,/^(?:all\b)/,/^(?:on\b)/,/^(?:off\b)/,/^(?:true\b)/,/^(?:false\b)/,/^(?:[0-9]+(?=\b))/,/^(?:"(?:[^\"]|\\")*")/,/^(?:[a-zA-Z0-9_\.]+)/,/^(?:([\/A-Za-z_\-0-9\.\*]+))/,/^(?:$)/],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35],"inclusive":true}}
 });
 return lexer;
 })();

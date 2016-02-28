@@ -33,6 +33,13 @@ dso                         [.*]\.so$
 epoll|poll|select return 'iomethod';
 "dso" return 'dso';
 "load" return 'load';
+"http" return 'http';
+"sendfile" return 'sendfile';
+"tcp_nopush" return 'tcp_nopush';
+"tcp_nodelay" return 'tcp_nodelay';
+"server_tokens" return 'server_tokens';
+"server_info" return 'server_info';
+"server_tag" return 'server_tag';
 
 // logical literals
 "null"                      return 'NULL';
@@ -87,6 +94,7 @@ ngxRootDirective
     }
     | ngxEventsBlock
     | ngxDsoBlock
+    | ngxHttpBlock
     ;
 
 ngxEventsBlock
@@ -136,6 +144,54 @@ ngxDsoDirective
             ast['dso'] = {};
         }
         ast['dso'][$2] = true;
+    }
+    ;
+
+ngxHttpBlock
+    : http '{' ngxHttpDirectiveList '}'
+    ;
+
+ngxHttpDirectiveList
+    : ngxHttpDirective
+    | ngxHttpDirectiveList ngxHttpDirective
+    ;
+
+ngxHttpDirective
+    : sendfile ngxOnOFF ';' {
+        if (!ast['http']) {
+            ast['http'] = {};
+        }
+        ast['http'][$1] = $2;
+    }
+    | tcp_nopush ngxOnOFF ';' {
+        if (!ast['http']) {
+            ast['http'] = {};
+        }
+        ast['http'][$1] = $2;
+    }
+    | tcp_nodelay ngxOnOFF ';' {
+        if (!ast['http']) {
+            ast['http'] = {};
+        }
+        ast['http'][$1] = $2;
+    }
+    | server_tokens ngxOnOFF ';' {
+        if (!ast['http']) {
+            ast['http'] = {};
+        }
+        ast['http'][$1] = $2;
+    }
+    | server_info ngxOnOFF ';' {
+        if (!ast['http']) {
+            ast['http'] = {};
+        }
+        ast['http'][$1] = $2;
+    }
+    | server_tag ngxOnOFF ';' {
+        if (!ast['http']) {
+            ast['http'] = {};
+        }
+        ast['http'][$1] = $2;
     }
     ;
 
