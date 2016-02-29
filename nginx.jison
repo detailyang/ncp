@@ -1,13 +1,13 @@
 /* description: Parses and executes mathematical expressions. */
 {{
+    var fs = require('fs');
+    var globsync = require('glob').sync;
     var ast = {
         'events': {},
         'dso': {},
         'http': {}
     };
     var include = 0;
-    var fs = require('fs');
-    var globsync = require('glob').sync;
 }}
 /* lexical grammar */
 %lex
