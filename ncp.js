@@ -75,8 +75,8 @@ var ncp = (function(){
 var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,4],$V1=[1,5],$V2=[1,6],$V3=[1,7],$V4=[1,11],$V5=[1,12],$V6=[1,13],$V7=[5,7,10,12,13,17,27,31],$V8=[1,18],$V9=[1,31],$Va=[1,32],$Vb=[1,33],$Vc=[1,36],$Vd=[1,39],$Ve=[1,40],$Vf=[1,41],$Vg=[1,42],$Vh=[1,43],$Vi=[1,44],$Vj=[1,45],$Vk=[1,46],$Vl=[1,47],$Vm=[1,48],$Vn=[1,49],$Vo=[1,50],$Vp=[1,51],$Vq=[1,52],$Vr=[1,53],$Vs=[1,54],$Vt=[1,55],$Vu=[1,56],$Vv=[1,57],$Vw=[1,58],$Vx=[1,59],$Vy=[1,60],$Vz=[1,61],$VA=[1,65],$VB=[1,64],$VC=[20,22,24,25],$VD=[1,70],$VE=[1,71],$VF=[20,30],$VG=[20,34,35,36,37,38,39,40,42,43,44,46,47,48,49,50,51,52,53,54,55,56,57,58,61,65],$VH=[1,86],$VI=[1,90],$VJ=[1,136],$VK=[20,64];
 var parser = {trace: function trace() { },
 yy: {},
-symbols_: {"error":2,"ngx":3,"ngxRootDirectiveList":4,"EOF":5,"ngxRootDirective":6,"user":7,"LITERAL":8,";":9,"worker_porcess":10,"ngxNumber":11,"error_log":12,"pid":13,"ngxEventsBlock":14,"ngxDsoBlock":15,"ngxHttpBlock":16,"events":17,"{":18,"ngxEventsDirectiveList":19,"}":20,"ngxEventsDirective":21,"accept_mutex":22,"ngxOnOFF":23,"worker_connections":24,"use":25,"iomethod":26,"dso":27,"ngxDsoDirectiveList":28,"ngxDsoDirective":29,"load":30,"http":31,"ngxHttpDirectiveList":32,"ngxHttpDirective":33,"sendfile":34,"tcp_nopush":35,"tcp_nodelay":36,"server_tokens":37,"server_info":38,"server_tag":39,"keepalive_timeout":40,"ngxTime":41,"client_header_timeout":42,"send_timeout":43,"client_max_body_size":44,"ngxSize":45,"client_body_buffer_size":46,"client_body_postpone_sending":47,"proxy_request_buffering":48,"fastcgi_request_buffering":49,"proxy_buffering":50,"proxy_buffer_size":51,"underscores_in_headers":52,"ignore_invalid_headers":53,"server_names_hash_max_size":54,"server_names_hash_bucket_size":55,"large_client_header_buffers":56,"proxy_connect_timeout":57,"proxy_read_timeout":58,"ngxInclude":59,"ngxServerBlock":60,"server":61,"ngxServerDirectiveList":62,"ngxServerDirective":63,"server_name":64,"include":65,"NUMBER":66,"ON":67,"OFF":68,"TIME":69,"SIZE":70,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"EOF",7:"user",8:"LITERAL",9:";",10:"worker_porcess",12:"error_log",13:"pid",17:"events",18:"{",20:"}",22:"accept_mutex",24:"worker_connections",25:"use",26:"iomethod",27:"dso",30:"load",31:"http",34:"sendfile",35:"tcp_nopush",36:"tcp_nodelay",37:"server_tokens",38:"server_info",39:"server_tag",40:"keepalive_timeout",42:"client_header_timeout",43:"send_timeout",44:"client_max_body_size",46:"client_body_buffer_size",47:"client_body_postpone_sending",48:"proxy_request_buffering",49:"fastcgi_request_buffering",50:"proxy_buffering",51:"proxy_buffer_size",52:"underscores_in_headers",53:"ignore_invalid_headers",54:"server_names_hash_max_size",55:"server_names_hash_bucket_size",56:"large_client_header_buffers",57:"proxy_connect_timeout",58:"proxy_read_timeout",61:"server",64:"server_name",65:"include",66:"NUMBER",67:"ON",68:"OFF",69:"TIME",70:"SIZE"},
+symbols_: {"error":2,"ngx":3,"ngxRootDirectiveList":4,"EOF":5,"ngxRootDirective":6,"user":7,"LITERAL":8,";":9,"worker_processes":10,"ngxNumber":11,"error_log":12,"pid":13,"ngxEventsBlock":14,"ngxDsoBlock":15,"ngxHttpBlock":16,"events":17,"{":18,"ngxEventsDirectiveList":19,"}":20,"ngxEventsDirective":21,"accept_mutex":22,"ngxOnOFF":23,"worker_connections":24,"use":25,"iomethod":26,"dso":27,"ngxDsoDirectiveList":28,"ngxDsoDirective":29,"load":30,"http":31,"ngxHttpDirectiveList":32,"ngxHttpDirective":33,"sendfile":34,"tcp_nopush":35,"tcp_nodelay":36,"server_tokens":37,"server_info":38,"server_tag":39,"keepalive_timeout":40,"ngxTime":41,"client_header_timeout":42,"send_timeout":43,"client_max_body_size":44,"ngxSize":45,"client_body_buffer_size":46,"client_body_postpone_sending":47,"proxy_request_buffering":48,"fastcgi_request_buffering":49,"proxy_buffering":50,"proxy_buffer_size":51,"underscores_in_headers":52,"ignore_invalid_headers":53,"server_names_hash_max_size":54,"server_names_hash_bucket_size":55,"large_client_header_buffers":56,"proxy_connect_timeout":57,"proxy_read_timeout":58,"ngxInclude":59,"ngxServerBlock":60,"server":61,"ngxServerDirectiveList":62,"ngxServerDirective":63,"server_name":64,"include":65,"NUMBER":66,"ON":67,"OFF":68,"TIME":69,"SIZE":70,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"EOF",7:"user",8:"LITERAL",9:";",10:"worker_processes",12:"error_log",13:"pid",17:"events",18:"{",20:"}",22:"accept_mutex",24:"worker_connections",25:"use",26:"iomethod",27:"dso",30:"load",31:"http",34:"sendfile",35:"tcp_nopush",36:"tcp_nodelay",37:"server_tokens",38:"server_info",39:"server_tag",40:"keepalive_timeout",42:"client_header_timeout",43:"send_timeout",44:"client_max_body_size",46:"client_body_buffer_size",47:"client_body_postpone_sending",48:"proxy_request_buffering",49:"fastcgi_request_buffering",50:"proxy_buffering",51:"proxy_buffer_size",52:"underscores_in_headers",53:"ignore_invalid_headers",54:"server_names_hash_max_size",55:"server_names_hash_bucket_size",56:"large_client_header_buffers",57:"proxy_connect_timeout",58:"proxy_read_timeout",61:"server",64:"server_name",65:"include",66:"NUMBER",67:"ON",68:"OFF",69:"TIME",70:"SIZE"},
 productions_: [0,[3,2],[4,1],[4,2],[6,4],[6,3],[6,3],[6,3],[6,3],[6,1],[6,1],[6,1],[14,4],[19,1],[19,2],[21,3],[21,3],[21,3],[15,4],[28,1],[28,2],[29,3],[16,4],[32,1],[32,2],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,4],[33,3],[33,3],[33,1],[33,1],[60,4],[62,1],[62,2],[63,3],[59,3],[11,1],[23,1],[23,1],[41,1],[45,1]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
@@ -85,84 +85,57 @@ var $0 = $$.length - 1;
 switch (yystate) {
 case 1:
 
-        return ast;
+      console.log(JSON.stringify(this.$));
+        return this.$;
+    
+break;
+case 2: case 13: case 19: case 23: case 48: case 49:
+
+      this.$ = [$$[$0]];
+    
+break;
+case 3: case 14: case 20: case 24:
+
+      this.$ = $$[$0-1].concat([$$[$0]]);
     
 break;
 case 4:
 
-        ast['user'] = $$[$0-2] + ' ' + $$[$0-1];
+        this.$ = [$$[$0-3], `${$$[$0-2]} ${$$[$0-1]}`];
     
 break;
-case 5:
+case 5: case 6: case 7: case 8:
 
-        ast['user'] = $$[$0-1] + ' nobody' ;
-    
-break;
-case 6:
-
-        ast['worker_porcess'] = $$[$0-1];
-    
-break;
-case 7: case 8:
-
-        ast['error_log'] = $$[$0-1];
+         this.$ = [$$[$0-2], $$[$0-1]];
     
 break;
 case 12:
 
-        this.$ = $$[$0-1];
+      this.$ = ['events', $$[$0-1]];
     
 break;
-case 15:
+case 15: case 16: case 17: case 21: case 25: case 26: case 27: case 28: case 29: case 30: case 31: case 32: case 33: case 34: case 35: case 36: case 37: case 38: case 39: case 40: case 41: case 42: case 43: case 44: case 46: case 47:
 
-        ast['events']['accept_mutex'] = $$[$0-1];
+      this.$ = [$$[$0-2], $$[$0-1]];
     
 break;
-case 16:
+case 18:
 
-        ast['events']['worker_connections'] = $$[$0-1];
+      this.$ = ['dso', $$[$0-1]];
     
 break;
-case 17:
+case 22:
 
-        ast['events']['use'] = $$[$0-1];
-    
-break;
-case 21:
-
-        ast['dso'][$$[$0-1]] = true;
-    
-break;
-case 25: case 26: case 27: case 28: case 29: case 30: case 31: case 32: case 33: case 34: case 35: case 36: case 37: case 38: case 39: case 40: case 41: case 42: case 43: case 44: case 47:
-
-        ast['http'][$$[$0-2]] = $$[$0-1];
+      this.$ = ['http', $$[$0-1]];
     
 break;
 case 45:
 
-        ast['http'][$$[$0-3]] = $$[$0-2] + ' ' + $$[$0-1];
+      this.$ = [$$[$0-3], `${$$[$0-2]} ${$$[$0-1]}`];
     
 break;
-case 46:
+case 50: case 53: case 54:
 
-         ast['http'][$$[$0-2]] = $$[$0-1];
-    
-break;
-case 48:
-
-        ast['http']['include'+include] = $$[$0];
-        include = include + 1;
-    
-break;
-case 50: case 53:
-
-    
-break;
-case 54:
-
-        var content = fs.readFileSync($$[$0-1]);
-        var _ast = yy.parser.parse('http {' + content.toString() + '}');
-        this.$ = _ast;
     
 break;
 case 55:
@@ -339,20 +312,7 @@ parse: function parse(input) {
 }};
 
     var fs = require('fs');
-    var globsync = require('glob').sync;
-    var ast = {
-        'events': {},
-        'dso': {},
-        'http': {}
-    };
-    var include = 0;
-<<<<<<< HEAD
-    var fs = require('fs');
-    var globsync = require('glob').sync;
-    var servercounter = 0;
-    var server = {};
-=======
->>>>>>> 10c8aeca4004f886082654a22044e9df7bb57ea1
+    var ast = [];
 /* generated by jison-lex 0.3.4 */
 var lexer = (function(){
 var lexer = ({

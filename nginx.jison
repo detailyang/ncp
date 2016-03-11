@@ -1,17 +1,7 @@
 /* description: Parses and executes mathematical expressions. */
 {{
     var fs = require('fs');
-    var globsync = require('glob').sync;
-    var ast = {
-        'events': {},
-        'dso': {},
-        'http': {}
-    };
-    var include = 0;
-    var fs = require('fs');
-    var globsync = require('glob').sync;
-    var servercounter = 0;
-    var server = {};
+    var ast = [];
 }}
 /* lexical grammar */
 %lex
@@ -37,7 +27,7 @@ size                        \d+[kmg]
 "server" return 'server';
 "server_name" return 'server_name';
 "user"  return 'user';
-"worker_processes" return 'worker_porcess';
+"worker_processes" return 'worker_processes';
 "worker_cpu_affinity" return 'worker_cpu_affinity';
 "error_log" return 'error_log';
 "pid" return 'pid';
@@ -99,158 +89,180 @@ epoll|poll|select return 'iomethod';
 %% /* language grammar */
 ngx
     : ngxRootDirectiveList EOF {
-        return ast;
+        console.log(JSON.stringify($$));
+        return $$;
     }
     ;
 
 ngxRootDirectiveList
-    : ngxRootDirective
-    | ngxRootDirectiveList ngxRootDirective
+    : ngxRootDirective {
+      $$ = [$1];
+    }
+    | ngxRootDirectiveList ngxRootDirective {
+      $$ = $1.concat([$2]);
+    }
     ;
 
 ngxRootDirective
     : user LITERAL LITERAL ';' {
-        ast['user'] = $2 + ' ' + $3;
+        $$ = [$1, `${$2} ${$3}`];
     }
     | user LITERAL ';' {
-        ast['user'] = $2 + ' nobody' ;
+         $$ = [$1, $2];
     }
-    | worker_porcess ngxNumber ';' {
-        ast['worker_porcess'] = $2;
+    | worker_processes ngxNumber ';' {
+         $$ = [$1, $2];
     }
     | error_log LITERAL ';' {
-        ast['error_log'] = $2;
+         $$ = [$1, $2];
     }
     | pid LITERAL ';' {
-        ast['error_log'] = $2;
+         $$ = [$1, $2];
     }
     | ngxEventsBlock
     | ngxDsoBlock
-    | ngxHttpBlock
+#    | ngxHttpBlock
     ;
 
 ngxEventsBlock
     : events '{' ngxEventsDirectiveList '}' {
-        $$ = $3;
+      $$ = ['events', $3];
     }
     ;
 
 ngxEventsDirectiveList
-    : ngxEventsDirective
-    | ngxEventsDirectiveList ngxEventsDirective
+    : ngxEventsDirective {
+      $$ = [$1];
+    }
+    | ngxEventsDirectiveList ngxEventsDirective {
+      $$ = $1.concat([$2]);
+    }
     ;
 
 ngxEventsDirective
     : accept_mutex ngxOnOFF ';' {
-        ast['events']['accept_mutex'] = $2;
+      $$ = [$1, $2];
     }
     | worker_connections ngxNumber ';' {
-        ast['events']['worker_connections'] = $2;
+      $$ = [$1, $2];
     }
     | use iomethod ';' {
-        ast['events']['use'] = $2;
+      $$ = [$1, $2];
     }
     ;
 
 ngxDsoBlock
-    : dso '{' ngxDsoDirectiveList '}'
+    : dso '{' ngxDsoDirectiveList '}' {
+      $$ = ['dso', $3];
+    }
     ;
 
 ngxDsoDirectiveList
-    : ngxDsoDirective
-    | ngxDsoDirectiveList ngxDsoDirective
+    : ngxDsoDirective {
+      $$ = [$1];
+    }
+    | ngxDsoDirectiveList ngxDsoDirective {
+      $$ = $1.concat([$2]);
+    }
     ;
 
 ngxDsoDirective
     : load LITERAL ';' {
-        ast['dso'][$2] = true;
+      $$ = [$1, $2];
     }
     ;
 
 ngxHttpBlock
-    : http '{' ngxHttpDirectiveList '}'
+    : http '{' ngxHttpDirectiveList '}' {
+      $$ = ['http', $3];
+    }
     ;
 
 ngxHttpDirectiveList
-    : ngxHttpDirective
-    | ngxHttpDirectiveList ngxHttpDirective
+    : ngxHttpDirective {
+      $$ = [$1];
+    }
+    | ngxHttpDirectiveList ngxHttpDirective {
+      $$ = $1.concat([$2]);
+    }
     ;
 
 ngxHttpDirective
     : sendfile ngxOnOFF ';' {
-        ast['http'][$1] = $2;
+      $$ = [$1, $2];
     }
     | tcp_nopush ngxOnOFF ';' {
-        ast['http'][$1] = $2;
+      $$ = [$1, $2];
     }
     | tcp_nodelay ngxOnOFF ';' {
-        ast['http'][$1] = $2;
+      $$ = [$1, $2];
     }
     | server_tokens ngxOnOFF ';' {
-        ast['http'][$1] = $2;
+      $$ = [$1, $2];
     }
     | server_info ngxOnOFF ';' {
-        ast['http'][$1] = $2;
+      $$ = [$1, $2];
     }
     | server_tag ngxOnOFF ';' {
-        ast['http'][$1] = $2;
+      $$ = [$1, $2];
     }
     | keepalive_timeout ngxTime ';' {
-        ast['http'][$1] = $2;
+      $$ = [$1, $2];
     }
     | client_header_timeout ngxTime ';' {
-        ast['http'][$1] = $2;
+      $$ = [$1, $2];
     }
     | send_timeout ngxTime ';' {
-        ast['http'][$1] = $2;
+      $$ = [$1, $2];
     }
     | client_max_body_size ngxSize ';' {
-        ast['http'][$1] = $2;
+      $$ = [$1, $2];
     }
     | client_body_buffer_size ngxSize ';' {
-        ast['http'][$1] = $2;
+      $$ = [$1, $2];
     }
     | client_body_postpone_sending ngxSize ';' {
-        ast['http'][$1] = $2;
+      $$ = [$1, $2];
     }
     | proxy_request_buffering ngxOnOFF ';' {
-        ast['http'][$1] = $2;
+      $$ = [$1, $2];
     }
     | fastcgi_request_buffering ngxOnOFF ';' {
-        ast['http'][$1] = $2;
+      $$ = [$1, $2];
     }
     | proxy_buffering ngxOnOFF ';' {
-        ast['http'][$1] = $2;
+      $$ = [$1, $2];
     }
     | proxy_buffer_size ngxSize ';' {
-        ast['http'][$1] = $2;
+      $$ = [$1, $2];
     }
     | underscores_in_headers ngxOnOFF ';' {
-        ast['http'][$1] = $2;
+      $$ = [$1, $2];
     }
     | ignore_invalid_headers ngxOnOFF ';' {
-        ast['http'][$1] = $2;
+      $$ = [$1, $2];
     }
     | server_names_hash_max_size ngxNumber ';' {
-        ast['http'][$1] = $2;
+      $$ = [$1, $2];
     }
     | server_names_hash_bucket_size ngxNumber ';' {
-        ast['http'][$1] = $2;
+      $$ = [$1, $2];
     }
     | large_client_header_buffers ngxNumber ngxSize ';' {
-        ast['http'][$1] = $2 + ' ' + $3;
+      $$ = [$1, `${$2} ${$3}`];
     }
     | proxy_connect_timeout ngxTime ';' {
-         ast['http'][$1] = $2;
+      $$ = [$1, $2];
     }
     | proxy_read_timeout ngxTime ';' {
-        ast['http'][$1] = $2;
+      $$ = [$1, $2];
     }
     | ngxInclude {
-        ast['http']['include'+include] = $1;
-        include = include + 1;
+      $$ = [$1];
     }
-    | ngxServerBlock
+    | ngxServerBlock {
+      $$ = [$1];
+    }
     ;
 
 ngxServerBlock
@@ -270,9 +282,6 @@ ngxServerDirective
 
 ngxInclude
     : include  LITERAL ';' {
-        var content = fs.readFileSync($2);
-        var _ast = yy.parser.parse('http {' + content.toString() + '}');
-        $$ = _ast;
     }
     ;
 
