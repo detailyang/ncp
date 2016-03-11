@@ -8,6 +8,8 @@
     var include = 0;
     var fs = require('fs');
     var globsync = require('glob').sync;
+    var servercounter = 0;
+    var server = {};
 }}
 /* lexical grammar */
 %lex
@@ -30,6 +32,8 @@ size                        \d+[kmg]
 ";"                         return ';';
 
 // keyword
+"server" return 'server';
+"server_name" return 'server_name';
 "user"  return 'user';
 "worker_processes" return 'worker_porcess';
 "worker_cpu_affinity" return 'worker_cpu_affinity';
@@ -244,11 +248,29 @@ ngxHttpDirective
         ast['http']['include'+include] = $1;
         include = include + 1;
     }
+    | ngxServerBlock
+    ;
+
+ngxServerBlock
+    : server '{' ngxServerDirectiveList '}' {
+    }
+    ;
+
+ngxServerDirectiveList
+    : ngxServerDirective
+    | ngxServerDirectiveList ngxServerDirective
+    ;
+
+ngxServerDirective
+    : server_name LITERAL ';' {
+    }
     ;
 
 ngxInclude
     : include  LITERAL ';' {
-        $$ = $2;
+        var content = fs.readFileSync($2);
+        var _ast = yy.parser.parse('http {' + content.toString() + '}');
+        $$ = _ast;
     }
     ;
 

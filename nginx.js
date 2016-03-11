@@ -71,123 +71,118 @@
     recoverable: (boolean: TRUE when the parser has a error recovery rule available for this particular error)
   }
 */
-var ncp = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,4],$V1=[1,5],$V2=[1,6],$V3=[1,7],$V4=[1,11],$V5=[1,12],$V6=[1,13],$V7=[5,7,10,12,13,17,27,31],$V8=[1,18],$V9=[1,31],$Va=[1,32],$Vb=[1,33],$Vc=[1,36],$Vd=[1,39],$Ve=[1,40],$Vf=[1,41],$Vg=[1,42],$Vh=[1,43],$Vi=[1,44],$Vj=[1,45],$Vk=[1,46],$Vl=[1,47],$Vm=[1,48],$Vn=[1,49],$Vo=[1,50],$Vp=[1,51],$Vq=[1,52],$Vr=[1,53],$Vs=[1,54],$Vt=[1,55],$Vu=[1,56],$Vv=[1,57],$Vw=[1,58],$Vx=[1,59],$Vy=[1,60],$Vz=[1,61],$VA=[1,65],$VB=[1,64],$VC=[20,22,24,25],$VD=[1,70],$VE=[1,71],$VF=[20,30],$VG=[20,34,35,36,37,38,39,40,42,43,44,46,47,48,49,50,51,52,53,54,55,56,57,58,61,65],$VH=[1,86],$VI=[1,90],$VJ=[1,136],$VK=[20,64];
+var nginx = (function(){
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,12],$V1=[1,13],$V2=[1,14],$V3=[1,15],$V4=[1,16],$V5=[1,17],$V6=[1,18],$V7=[1,19],$V8=[1,21],$V9=[1,22],$Va=[1,27],$Vb=[1,23],$Vc=[1,24],$Vd=[1,25],$Ve=[1,26],$Vf=[5,16],$Vg=[5,14,16,17,18,20,21,23,25,28,37,39,41,47,56,69,71],$Vh=[1,36],$Vi=[1,49],$Vj=[1,50],$Vk=[1,51],$Vl=[1,52],$Vm=[1,53],$Vn=[1,43],$Vo=[1,54],$Vp=[1,55],$Vq=[1,48],$Vr=[1,44],$Vs=[1,45],$Vt=[1,46],$Vu=[1,47],$Vv=[1,35],$Vw=[1,37],$Vx=[1,42],$Vy=[1,77],$Vz=[1,78],$VA=[1,79],$VB=[1,85],$VC=[8,14,50,51,52,53,54,55,59,61,62,68,73,75,76,77,78,79,80,81],$VD=[8,14,43,44,45,50,51,52,53,54,55,59,61,62,68,73,75,76,77,78,79,80,81],$VE=[8,14,15,43,44,45,50,51,52,53,54,55,59,61,62,68,73,75,76,77,78,79,80,81],$VF=[8,59,60,61],$VG=[44,51,52,53,54,55,73],$VH=[16,68],$VI=[1,123],$VJ=[1,126],$VK=[1,132],$VL=[8,16,68],$VM=[8,50],$VN=[14,17,18,20,21,23,25,28,37,39,41,47,56,69,71],$VO=[14,16,39,51,52,53,54,55,59,61,62,68,73,75,76,77,78,79,80,81];
 var parser = {trace: function trace() { },
 yy: {},
-symbols_: {"error":2,"ngx":3,"ngxRootDirectiveList":4,"EOF":5,"ngxRootDirective":6,"user":7,"LITERAL":8,";":9,"worker_porcess":10,"ngxNumber":11,"error_log":12,"pid":13,"ngxEventsBlock":14,"ngxDsoBlock":15,"ngxHttpBlock":16,"events":17,"{":18,"ngxEventsDirectiveList":19,"}":20,"ngxEventsDirective":21,"accept_mutex":22,"ngxOnOFF":23,"worker_connections":24,"use":25,"iomethod":26,"dso":27,"ngxDsoDirectiveList":28,"ngxDsoDirective":29,"load":30,"http":31,"ngxHttpDirectiveList":32,"ngxHttpDirective":33,"sendfile":34,"tcp_nopush":35,"tcp_nodelay":36,"server_tokens":37,"server_info":38,"server_tag":39,"keepalive_timeout":40,"ngxTime":41,"client_header_timeout":42,"send_timeout":43,"client_max_body_size":44,"ngxSize":45,"client_body_buffer_size":46,"client_body_postpone_sending":47,"proxy_request_buffering":48,"fastcgi_request_buffering":49,"proxy_buffering":50,"proxy_buffer_size":51,"underscores_in_headers":52,"ignore_invalid_headers":53,"server_names_hash_max_size":54,"server_names_hash_bucket_size":55,"large_client_header_buffers":56,"proxy_connect_timeout":57,"proxy_read_timeout":58,"ngxInclude":59,"ngxServerBlock":60,"server":61,"ngxServerDirectiveList":62,"ngxServerDirective":63,"server_name":64,"include":65,"NUMBER":66,"ON":67,"OFF":68,"TIME":69,"SIZE":70,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"EOF",7:"user",8:"LITERAL",9:";",10:"worker_porcess",12:"error_log",13:"pid",17:"events",18:"{",20:"}",22:"accept_mutex",24:"worker_connections",25:"use",26:"iomethod",27:"dso",30:"load",31:"http",34:"sendfile",35:"tcp_nopush",36:"tcp_nodelay",37:"server_tokens",38:"server_info",39:"server_tag",40:"keepalive_timeout",42:"client_header_timeout",43:"send_timeout",44:"client_max_body_size",46:"client_body_buffer_size",47:"client_body_postpone_sending",48:"proxy_request_buffering",49:"fastcgi_request_buffering",50:"proxy_buffering",51:"proxy_buffer_size",52:"underscores_in_headers",53:"ignore_invalid_headers",54:"server_names_hash_max_size",55:"server_names_hash_bucket_size",56:"large_client_header_buffers",57:"proxy_connect_timeout",58:"proxy_read_timeout",61:"server",64:"server_name",65:"include",66:"NUMBER",67:"ON",68:"OFF",69:"TIME",70:"SIZE"},
-productions_: [0,[3,2],[4,1],[4,2],[6,4],[6,3],[6,3],[6,3],[6,3],[6,1],[6,1],[6,1],[14,4],[19,1],[19,2],[21,3],[21,3],[21,3],[15,4],[28,1],[28,2],[29,3],[16,4],[32,1],[32,2],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,3],[33,4],[33,3],[33,3],[33,1],[33,1],[60,4],[62,1],[62,2],[63,3],[59,3],[11,1],[23,1],[23,1],[41,1],[45,1]],
+symbols_: {"error":2,"ngxInitial":3,"ngxSchema":4,"EOF":5,"ngxLoadBalancingMethod":6,"least_conn":7,";":8,"ip_hash":9,"ngxUpstreamSchema":10,"ngxSchemaDirective":11,"ngxCommand":12,"ngxBlock":13,"TAG":14,"{":15,"}":16,"http":17,"upstream":18,"ngxUpstreamName":19,"server":20,"location":21,"ngxLocationParams":22,"types":23,"ngxMimeTypesMap":24,"geo":25,"ngxVariable":26,"ngxMap":27,"map":28,"ngxIfBlock":29,"ngxSetCommand":30,"ngxInclude":31,"ngxLog":32,"ngxServerName":33,"ngxErrorPage":34,"ngxRewrite":35,"ngxValues":36,"set":37,"ngxValue":38,"include":39,"ngxPath":40,"if":41,"ngxExpr":42,")":43,"=":44,"OPERATOR":45,"REGEX":46,"log":47,"ngxLogParams":48,"ngxLogParam":49,"LOG_PARAM":50,"PATH":51,"URL":52,"URLP":53,"SOCKET":54,"NAMED_LOCATION":55,"server_name":56,"ngxDomains":57,"ngxDomain":58,"DOMAINLIKE":59,"DOMAINREGEX":60,"default":61,"VARIABLE":62,"ngxMapRow":63,"ngxMimeTypesRow":64,"ngxMimeType":65,"ngxFileExtensions":66,"ngxFileExtension":67,"MIMETYPE":68,"error_page":69,"ngxNumbers":70,"rewrite":71,"ngxNumber":72,"NUMBER":73,"ngxLiterals":74,"TRUE":75,"FALSE":76,"NULL":77,"ANY":78,"STRING":79,"SIZE":80,"NETMASK":81,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"EOF",7:"least_conn",8:";",9:"ip_hash",14:"TAG",15:"{",16:"}",17:"http",18:"upstream",20:"server",21:"location",23:"types",25:"geo",28:"map",37:"set",39:"include",41:"if",43:")",44:"=",45:"OPERATOR",46:"REGEX",47:"log",50:"LOG_PARAM",51:"PATH",52:"URL",53:"URLP",54:"SOCKET",55:"NAMED_LOCATION",56:"server_name",59:"DOMAINLIKE",60:"DOMAINREGEX",61:"default",62:"VARIABLE",68:"MIMETYPE",69:"error_page",71:"rewrite",73:"NUMBER",75:"TRUE",76:"FALSE",77:"NULL",78:"ANY",79:"STRING",80:"SIZE",81:"NETMASK"},
+productions_: [0,[3,2],[6,2],[6,2],[10,2],[10,1],[4,2],[4,1],[11,2],[11,1],[13,3],[13,4],[13,5],[13,4],[13,5],[13,4],[13,5],[13,6],[13,4],[13,1],[12,1],[12,1],[12,1],[12,1],[12,1],[12,1],[12,2],[30,3],[31,2],[29,6],[42,1],[42,3],[42,3],[32,2],[32,3],[32,4],[48,2],[48,1],[49,1],[22,2],[22,2],[22,1],[19,1],[19,1],[19,1],[19,1],[19,1],[19,1],[33,2],[58,1],[58,1],[58,1],[57,1],[57,2],[26,1],[27,3],[27,2],[63,2],[63,1],[63,2],[24,2],[24,1],[64,3],[64,2],[66,2],[66,1],[65,1],[34,4],[34,3],[35,3],[67,1],[40,1],[40,1],[40,1],[40,1],[40,1],[70,2],[70,1],[72,1],[74,1],[74,1],[74,1],[74,1],[38,1],[38,1],[38,1],[38,1],[38,1],[38,1],[38,1],[38,1],[38,1],[38,1],[36,2],[36,2],[36,1]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
 var $0 = $$.length - 1;
 switch (yystate) {
 case 1:
-
-        return ast;
-    
+return this.$;
 break;
-case 4:
-
-        ast['user'] = $$[$0-2] + ' ' + $$[$0-1];
-    
+case 2: case 3: case 56:
+this.$ = [$$[$0-1]];
 break;
-case 5:
-
-        ast['user'] = $$[$0-1] + ' nobody' ;
-    
+case 4: case 6:
+this.$ = $$[$0], $$[$0].unshift($$[$0-1]);
 break;
-case 6:
-
-        ast['worker_porcess'] = $$[$0-1];
-    
+case 7: case 30: case 37: case 52: case 61: case 65: case 77: case 95:
+this.$ = [$$[$0]];
 break;
-case 7: case 8:
-
-        ast['error_log'] = $$[$0-1];
-    
+case 10:
+this.$ = [$$[$0-2], null];
 break;
-case 12:
-
-        this.$ = $$[$0-1];
-    
+case 11: case 13: case 15: case 18:
+this.$ = [$$[$0-3], $$[$0-1]];
 break;
-case 15:
-
-        ast['events']['accept_mutex'] = $$[$0-1];
-    
-break;
-case 16:
-
-        ast['events']['worker_connections'] = $$[$0-1];
-    
+case 12: case 14: case 16:
+this.$ = [$$[$0-4], $$[$0-3], $$[$0-1]];
 break;
 case 17:
+this.$ = [$$[$0-5], $$[$0-4], $$[$0-3], $$[$0-1]];
+break;
+case 26: case 33: case 39: case 40: case 57: case 59: case 63:
+this.$ = [$$[$0-1], $$[$0]];
+break;
+case 27: case 31: case 32: case 34: case 69:
+this.$ = [$$[$0-2], $$[$0-1], $$[$0]];
+break;
+case 28:
 
-        ast['events']['use'] = $$[$0-1];
+
+        var data = '', files = [];
+        if (fs.existsSync($$[$0])) {
+            data = fs.readFileSync($$[$0], {encoding: 'utf8'});
+        } else {
+            files = globsync($$[$0], {silent: true, nonull: false});
+            if (files.length) {
+                files.forEach(function (v, k) {
+                    data += fs.readFileSync(v, {encoding: 'utf8'});
+                });
+            } else {
+                lexer.parseError('File '+$$[$0]+' is not exist.', this);
+            }
+        }
+
+        lexer._input = data + lexer._input;
+        this.$ = ['#', $$[$0-1] + ' ' + $$[$0]];
     
 break;
-case 21:
-
-        ast['dso'][$$[$0-1]] = true;
-    
+case 29:
+this.$ = [$$[$0-5], $$[$0-4], $$[$0-1]];
 break;
-case 25: case 26: case 27: case 28: case 29: case 30: case 31: case 32: case 33: case 34: case 35: case 36: case 37: case 38: case 39: case 40: case 41: case 42: case 43: case 44: case 47:
-
-        ast['http'][$$[$0-2]] = $$[$0-1];
-    
+case 35: case 67:
+this.$ = [$$[$0-3], $$[$0-2], $$[$0-1], $$[$0]];
 break;
-case 45:
-
-        ast['http'][$$[$0-3]] = $$[$0-2] + ' ' + $$[$0-1];
-    
+case 36:
+this.$ = $$[$0-1], $$[$0-1].push($$[$0]);
 break;
-case 46:
-
-         ast['http'][$$[$0-2]] = $$[$0-1];
-    
+case 41:
+this.$ = [null, $$[$0]];
 break;
-case 48:
-
-        ast['http']['include'+include] = $$[$0];
-        include = include + 1;
-    
-break;
-case 50: case 53:
-
-    
+case 53: case 60: case 76: case 93: case 94:
+this.$ = $$[$0-1]; $$[$0-1].push($$[$0]);
 break;
 case 54:
-
-        var content = fs.readFileSync($$[$0-1]);
-        var _ast = yy.parser.parse('http {' + content.toString() + '}');
-        console.log(server);
-        this.$ = _ast;
-    
+this.$ = yytext;
 break;
 case 55:
+this.$ = $$[$0-2]; $$[$0-2].push($$[$0-1]);
+break;
+case 62:
+this.$ = [$$[$0-2], $$[$0-1]];
+break;
+case 64:
+this.$ = $$[$0]; $$[$0].unshift($$[$0-1]);
+break;
+case 68:
+this.$ = [$$[$0-2], $$[$0-1], null, $$[$0]];
+break;
+case 78:
 this.$ = Number(yytext);
 break;
-case 56:
-
-        this.$ = 'on';
-    
+case 79:
+this.$ = true;
 break;
-case 57:
-
-        this.$ = 'off';
-    
+case 80:
+this.$ = false;
 break;
-case 58: case 59:
-
-        this.$ = $$[$0];
-    
+case 81:
+this.$ = null;
+break;
+case 82:
+this.$ = 'any';
 break;
 }
 },
-table: [{3:1,4:2,6:3,7:$V0,10:$V1,12:$V2,13:$V3,14:8,15:9,16:10,17:$V4,27:$V5,31:$V6},{1:[3]},{5:[1,14],6:15,7:$V0,10:$V1,12:$V2,13:$V3,14:8,15:9,16:10,17:$V4,27:$V5,31:$V6},o($V7,[2,2]),{8:[1,16]},{11:17,66:$V8},{8:[1,19]},{8:[1,20]},o($V7,[2,9]),o($V7,[2,10]),o($V7,[2,11]),{18:[1,21]},{18:[1,22]},{18:[1,23]},{1:[2,1]},o($V7,[2,3]),{8:[1,24],9:[1,25]},{9:[1,26]},o([9,70],[2,55]),{9:[1,27]},{9:[1,28]},{19:29,21:30,22:$V9,24:$Va,25:$Vb},{28:34,29:35,30:$Vc},{32:37,33:38,34:$Vd,35:$Ve,36:$Vf,37:$Vg,38:$Vh,39:$Vi,40:$Vj,42:$Vk,43:$Vl,44:$Vm,46:$Vn,47:$Vo,48:$Vp,49:$Vq,50:$Vr,51:$Vs,52:$Vt,53:$Vu,54:$Vv,55:$Vw,56:$Vx,57:$Vy,58:$Vz,59:62,60:63,61:$VA,65:$VB},{9:[1,66]},o($V7,[2,5]),o($V7,[2,6]),o($V7,[2,7]),o($V7,[2,8]),{20:[1,67],21:68,22:$V9,24:$Va,25:$Vb},o($VC,[2,13]),{23:69,67:$VD,68:$VE},{11:72,66:$V8},{26:[1,73]},{20:[1,74],29:75,30:$Vc},o($VF,[2,19]),{8:[1,76]},{20:[1,77],33:78,34:$Vd,35:$Ve,36:$Vf,37:$Vg,38:$Vh,39:$Vi,40:$Vj,42:$Vk,43:$Vl,44:$Vm,46:$Vn,47:$Vo,48:$Vp,49:$Vq,50:$Vr,51:$Vs,52:$Vt,53:$Vu,54:$Vv,55:$Vw,56:$Vx,57:$Vy,58:$Vz,59:62,60:63,61:$VA,65:$VB},o($VG,[2,23]),{23:79,67:$VD,68:$VE},{23:80,67:$VD,68:$VE},{23:81,67:$VD,68:$VE},{23:82,67:$VD,68:$VE},{23:83,67:$VD,68:$VE},{23:84,67:$VD,68:$VE},{41:85,69:$VH},{41:87,69:$VH},{41:88,69:$VH},{45:89,70:$VI},{45:91,70:$VI},{45:92,70:$VI},{23:93,67:$VD,68:$VE},{23:94,67:$VD,68:$VE},{23:95,67:$VD,68:$VE},{45:96,70:$VI},{23:97,67:$VD,68:$VE},{23:98,67:$VD,68:$VE},{11:99,66:$V8},{11:100,66:$V8},{11:101,66:$V8},{41:102,69:$VH},{41:103,69:$VH},o($VG,[2,48]),o($VG,[2,49]),{8:[1,104]},{18:[1,105]},o($V7,[2,4]),o($V7,[2,12]),o($VC,[2,14]),{9:[1,106]},{9:[2,56]},{9:[2,57]},{9:[1,107]},{9:[1,108]},o($V7,[2,18]),o($VF,[2,20]),{9:[1,109]},o($V7,[2,22]),o($VG,[2,24]),{9:[1,110]},{9:[1,111]},{9:[1,112]},{9:[1,113]},{9:[1,114]},{9:[1,115]},{9:[1,116]},{9:[2,58]},{9:[1,117]},{9:[1,118]},{9:[1,119]},{9:[2,59]},{9:[1,120]},{9:[1,121]},{9:[1,122]},{9:[1,123]},{9:[1,124]},{9:[1,125]},{9:[1,126]},{9:[1,127]},{9:[1,128]},{9:[1,129]},{45:130,70:$VI},{9:[1,131]},{9:[1,132]},{9:[1,133]},{62:134,63:135,64:$VJ},o($VC,[2,15]),o($VC,[2,16]),o($VC,[2,17]),o($VF,[2,21]),o($VG,[2,25]),o($VG,[2,26]),o($VG,[2,27]),o($VG,[2,28]),o($VG,[2,29]),o($VG,[2,30]),o($VG,[2,31]),o($VG,[2,32]),o($VG,[2,33]),o($VG,[2,34]),o($VG,[2,35]),o($VG,[2,36]),o($VG,[2,37]),o($VG,[2,38]),o($VG,[2,39]),o($VG,[2,40]),o($VG,[2,41]),o($VG,[2,42]),o($VG,[2,43]),o($VG,[2,44]),{9:[1,137]},o($VG,[2,46]),o($VG,[2,47]),o($VG,[2,54]),{20:[1,138],63:139,64:$VJ},o($VK,[2,51]),{8:[1,140]},o($VG,[2,45]),o($VG,[2,50]),o($VK,[2,52]),{9:[1,141]},o($VK,[2,53])],
-defaultActions: {14:[2,1],70:[2,56],71:[2,57],86:[2,58],90:[2,59]},
+table: [{3:1,4:2,11:3,12:4,13:5,14:$V0,17:$V1,18:$V2,20:$V3,21:$V4,23:$V5,25:$V6,28:$V7,29:20,30:6,31:7,32:8,33:9,34:10,35:11,37:$V8,39:$V9,41:$Va,47:$Vb,56:$Vc,69:$Vd,71:$Ve},{1:[3]},{5:[1,28]},o($Vf,[2,7],{11:3,12:4,13:5,30:6,31:7,32:8,33:9,34:10,35:11,29:20,4:29,14:$V0,17:$V1,18:$V2,20:$V3,21:$V4,23:$V5,25:$V6,28:$V7,37:$V8,39:$V9,41:$Va,47:$Vb,56:$Vc,69:$Vd,71:$Ve}),{8:[1,30]},o($Vg,[2,9]),{8:[2,20]},{8:[2,21]},{8:[2,22]},{8:[2,23]},{8:[2,24]},{8:[2,25]},{14:$Vh,15:[1,32],26:40,36:31,38:33,40:39,51:$Vi,52:$Vj,53:$Vk,54:$Vl,55:$Vm,59:$Vn,62:$Vo,65:41,68:$Vp,72:38,73:$Vq,74:34,75:$Vr,76:$Vs,77:$Vt,78:$Vu,79:$Vv,80:$Vw,81:$Vx},{15:[1,56]},{14:[1,59],19:57,51:[1,58],52:[1,60],53:[1,61],54:[1,62],55:[1,63]},{15:[1,64]},{22:65,40:68,44:[1,67],45:[1,66],51:$Vi,52:$Vj,53:$Vk,54:$Vl,55:$Vm},{15:[1,69]},{26:70,62:$Vo},{26:71,62:$Vo},o($Vg,[2,19]),{26:72,62:$Vo},{40:73,51:$Vi,52:$Vj,53:$Vk,54:$Vl,55:$Vm},{40:74,51:$Vi,52:$Vj,53:$Vk,54:$Vl,55:$Vm},{57:75,58:76,59:$Vy,60:$Vz,61:$VA},{70:80,72:81,73:$Vq},{46:[1,82]},{14:$Vh,26:40,38:84,40:39,42:83,51:$Vi,52:$Vj,53:$Vk,54:$Vl,55:$Vm,59:$Vn,62:$Vo,65:41,68:$Vp,72:38,73:$Vq,74:34,75:$Vr,76:$Vs,77:$Vt,78:$Vu,79:$Vv,80:$Vw,81:$Vx},{1:[2,1]},o($Vf,[2,6]),o($Vg,[2,8]),{8:[2,26],14:$Vh,26:40,38:86,40:39,51:$Vi,52:$Vj,53:$Vk,54:$Vl,55:$Vm,59:$Vn,61:$VB,62:$Vo,65:41,68:$Vp,72:38,73:$Vq,74:34,75:$Vr,76:$Vs,77:$Vt,78:$Vu,79:$Vv,80:$Vw,81:$Vx},{4:88,11:3,12:4,13:5,14:$V0,16:[1,87],17:$V1,18:$V2,20:$V3,21:$V4,23:$V5,25:$V6,28:$V7,29:20,30:6,31:7,32:8,33:9,34:10,35:11,37:$V8,39:$V9,41:$Va,47:$Vb,56:$Vc,69:$Vd,71:$Ve},o($VC,[2,95]),o($VD,[2,83]),o($VD,[2,84]),o($VD,[2,85]),o($VD,[2,86]),o($VD,[2,87]),o($VD,[2,88]),o($VD,[2,89]),o($VD,[2,90]),o($VD,[2,91]),o($VD,[2,92]),o($VD,[2,79]),o($VD,[2,80]),o($VD,[2,81]),o($VD,[2,82]),o($VD,[2,78]),o($VE,[2,71]),o($VE,[2,72]),o($VE,[2,73]),o($VE,[2,74]),o($VE,[2,75]),o($VE,[2,54]),o($VD,[2,66]),{4:89,11:3,12:4,13:5,14:$V0,17:$V1,18:$V2,20:$V3,21:$V4,23:$V5,25:$V6,28:$V7,29:20,30:6,31:7,32:8,33:9,34:10,35:11,37:$V8,39:$V9,41:$Va,47:$Vb,56:$Vc,69:$Vd,71:$Ve},{15:[1,90]},{15:[2,42]},{15:[2,43]},{15:[2,44]},{15:[2,45]},{15:[2,46]},{15:[2,47]},{4:91,11:3,12:4,13:5,14:$V0,17:$V1,18:$V2,20:$V3,21:$V4,23:$V5,25:$V6,28:$V7,29:20,30:6,31:7,32:8,33:9,34:10,35:11,37:$V8,39:$V9,41:$Va,47:$Vb,56:$Vc,69:$Vd,71:$Ve},{15:[1,92]},{46:[1,93]},{40:94,51:$Vi,52:$Vj,53:$Vk,54:$Vl,55:$Vm},{15:[2,41]},{24:95,64:96,65:97,68:$Vp},{15:[1,98]},{26:99,62:$Vo},{14:$Vh,26:40,38:100,40:39,51:$Vi,52:$Vj,53:$Vk,54:$Vl,55:$Vm,59:$Vn,62:$Vo,65:41,68:$Vp,72:38,73:$Vq,74:34,75:$Vr,76:$Vs,77:$Vt,78:$Vu,79:$Vv,80:$Vw,81:$Vx},{8:[2,28]},{8:[2,33],14:$Vh,26:40,36:101,38:33,40:39,51:$Vi,52:$Vj,53:$Vk,54:$Vl,55:$Vm,59:$Vn,62:$Vo,65:41,68:$Vp,72:38,73:$Vq,74:34,75:$Vr,76:$Vs,77:$Vt,78:$Vu,79:$Vv,80:$Vw,81:$Vx},{8:[2,48],58:102,59:$Vy,60:$Vz,61:$VA},o($VF,[2,52]),o($VF,[2,49]),o($VF,[2,50]),o($VF,[2,51]),{40:104,44:[1,103],51:$Vi,52:$Vj,53:$Vk,54:$Vl,55:$Vm,72:105,73:$Vq},o($VG,[2,77]),{14:$Vh,26:40,36:106,38:33,40:39,51:$Vi,52:$Vj,53:$Vk,54:$Vl,55:$Vm,59:$Vn,62:$Vo,65:41,68:$Vp,72:38,73:$Vq,74:34,75:$Vr,76:$Vs,77:$Vt,78:$Vu,79:$Vv,80:$Vw,81:$Vx},{43:[1,107]},{43:[2,30],44:[1,108],45:[1,109]},o($VC,[2,93]),o($VC,[2,94]),o($Vg,[2,10]),{16:[1,110]},{16:[1,111]},{4:114,6:113,7:[1,115],9:[1,116],10:112,11:3,12:4,13:5,14:$V0,17:$V1,18:$V2,20:$V3,21:$V4,23:$V5,25:$V6,28:$V7,29:20,30:6,31:7,32:8,33:9,34:10,35:11,37:$V8,39:$V9,41:$Va,47:$Vb,56:$Vc,69:$Vd,71:$Ve},{16:[1,117]},{4:118,11:3,12:4,13:5,14:$V0,17:$V1,18:$V2,20:$V3,21:$V4,23:$V5,25:$V6,28:$V7,29:20,30:6,31:7,32:8,33:9,34:10,35:11,37:$V8,39:$V9,41:$Va,47:$Vb,56:$Vc,69:$Vd,71:$Ve},{15:[2,39]},{15:[2,40]},{16:[1,119],64:120,65:97,68:$Vp},o($VH,[2,61]),{14:$VI,66:121,67:122},{14:$Vh,26:40,27:124,31:127,38:128,39:$V9,40:39,51:$Vi,52:$Vj,53:$Vk,54:$Vl,55:$Vm,59:$Vn,61:$VJ,62:$Vo,63:125,65:41,68:$Vp,72:38,73:$Vq,74:34,75:$Vr,76:$Vs,77:$Vt,78:$Vu,79:$Vv,80:$Vw,81:$Vx},{15:[1,129]},{8:[2,27]},{8:[2,34],14:$Vh,26:40,38:86,40:39,48:130,49:131,50:$VK,51:$Vi,52:$Vj,53:$Vk,54:$Vl,55:$Vm,59:$Vn,61:$VB,62:$Vo,65:41,68:$Vp,72:38,73:$Vq,74:34,75:$Vr,76:$Vs,77:$Vt,78:$Vu,79:$Vv,80:$Vw,81:$Vx},o($VF,[2,53]),{40:133,51:$Vi,52:$Vj,53:$Vk,54:$Vl,55:$Vm},{8:[2,68]},o($VG,[2,76]),{8:[2,69],14:$Vh,26:40,38:86,40:39,51:$Vi,52:$Vj,53:$Vk,54:$Vl,55:$Vm,59:$Vn,61:$VB,62:$Vo,65:41,68:$Vp,72:38,73:$Vq,74:34,75:$Vr,76:$Vs,77:$Vt,78:$Vu,79:$Vv,80:$Vw,81:$Vx},{15:[1,134]},{14:$Vh,26:40,38:135,40:39,51:$Vi,52:$Vj,53:$Vk,54:$Vl,55:$Vm,59:$Vn,62:$Vo,65:41,68:$Vp,72:38,73:$Vq,74:34,75:$Vr,76:$Vs,77:$Vt,78:$Vu,79:$Vv,80:$Vw,81:$Vx},{46:[1,136]},o($Vg,[2,18]),o($Vg,[2,11]),{16:[1,137]},{4:138,11:3,12:4,13:5,14:$V0,17:$V1,18:$V2,20:$V3,21:$V4,23:$V5,25:$V6,28:$V7,29:20,30:6,31:7,32:8,33:9,34:10,35:11,37:$V8,39:$V9,41:$Va,47:$Vb,56:$Vc,69:$Vd,71:$Ve},{16:[2,5]},{8:[1,139]},{8:[1,140]},o($Vg,[2,13]),{16:[1,141]},o($Vg,[2,15]),o($VH,[2,60]),o($VH,[2,63],{8:[1,142]}),o($VL,[2,65],{67:122,66:143,14:$VI}),o([8,14,16,68],[2,70]),{14:$Vh,16:[1,144],26:40,31:127,38:128,39:$V9,40:39,51:$Vi,52:$Vj,53:$Vk,54:$Vl,55:$Vm,59:$Vn,61:$VJ,62:$Vo,63:145,65:41,68:$Vp,72:38,73:$Vq,74:34,75:$Vr,76:$Vs,77:$Vt,78:$Vu,79:$Vv,80:$Vw,81:$Vx},{8:[1,146]},{14:$Vh,26:40,38:147,40:39,51:$Vi,52:$Vj,53:$Vk,54:$Vl,55:$Vm,59:$Vn,62:$Vo,65:41,68:$Vp,72:38,73:$Vq,74:34,75:$Vr,76:$Vs,77:$Vt,78:$Vu,79:$Vv,80:$Vw,81:$Vx},{8:[2,58]},{14:$Vh,26:40,38:148,40:39,51:$Vi,52:$Vj,53:$Vk,54:$Vl,55:$Vm,59:$Vn,62:$Vo,65:41,68:$Vp,72:38,73:$Vq,74:34,75:$Vr,76:$Vs,77:$Vt,78:$Vu,79:$Vv,80:$Vw,81:$Vx},{14:$Vh,26:40,27:149,31:127,38:128,39:$V9,40:39,51:$Vi,52:$Vj,53:$Vk,54:$Vl,55:$Vm,59:$Vn,61:$VJ,62:$Vo,63:125,65:41,68:$Vp,72:38,73:$Vq,74:34,75:$Vr,76:$Vs,77:$Vt,78:$Vu,79:$Vv,80:$Vw,81:$Vx},{8:[2,35],49:150,50:$VK},o($VM,[2,37]),o($VM,[2,38]),{8:[2,67]},{4:151,11:3,12:4,13:5,14:$V0,17:$V1,18:$V2,20:$V3,21:$V4,23:$V5,25:$V6,28:$V7,29:20,30:6,31:7,32:8,33:9,34:10,35:11,37:$V8,39:$V9,41:$Va,47:$Vb,56:$Vc,69:$Vd,71:$Ve},{43:[2,31]},{43:[2,32]},o($Vg,[2,12]),{16:[2,4]},o($VN,[2,2]),o($VN,[2,3]),o($Vg,[2,14]),o($VH,[2,62]),o($VL,[2,64]),o($Vg,[2,16]),{8:[1,152]},o($VO,[2,56]),{8:[2,57]},{8:[2,59]},{14:$Vh,16:[1,153],26:40,31:127,38:128,39:$V9,40:39,51:$Vi,52:$Vj,53:$Vk,54:$Vl,55:$Vm,59:$Vn,61:$VJ,62:$Vo,63:145,65:41,68:$Vp,72:38,73:$Vq,74:34,75:$Vr,76:$Vs,77:$Vt,78:$Vu,79:$Vv,80:$Vw,81:$Vx},o($VM,[2,36]),{16:[1,154]},o($VO,[2,55]),o($Vg,[2,17]),o($Vg,[2,29])],
+defaultActions: {6:[2,20],7:[2,21],8:[2,22],9:[2,23],10:[2,24],11:[2,25],28:[2,1],58:[2,42],59:[2,43],60:[2,44],61:[2,45],62:[2,46],63:[2,47],68:[2,41],73:[2,28],93:[2,39],94:[2,40],100:[2,27],104:[2,68],114:[2,5],127:[2,58],133:[2,67],135:[2,31],136:[2,32],138:[2,4],147:[2,57],148:[2,59]},
 parseError: function parseError(str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -339,16 +334,8 @@ parse: function parse(input) {
     return true;
 }};
 
-    var ast = {
-        'events': {},
-        'dso': {},
-        'http': {}
-    };
-    var include = 0;
     var fs = require('fs');
     var globsync = require('glob').sync;
-    var servercounter = 0;
-    var server = {};
 /* generated by jison-lex 0.3.4 */
 var lexer = (function(){
 var lexer = ({
@@ -681,120 +668,100 @@ case 0:/* skip whitespace */
 break;
 case 1:/* skip comment */
 break;
-case 2:return 18;
+case 2:return 8;
 break;
-case 3:return 20;
+case 3:return 15;
 break;
-case 4:return 9;
+case 4:return 16;
 break;
-case 5:return 61;
+case 5:return 43;
 break;
-case 6:return 64;
+case 6:return 44;
 break;
-case 7:return 7;
+case 7:return 41;
 break;
-case 8:return 10;
+case 8:return 39;
 break;
-case 9:return 'worker_cpu_affinity';
+case 9:return 69;
 break;
-case 10:return 12;
+case 10:return 71;
 break;
-case 11:return 13;
+case 11:return "default";
 break;
-case 12:return 17;
+case 12:return 37;
 break;
-case 13:return 22;
+case 13:return 17;
 break;
-case 14:return 24;
+case 14:return 20;
 break;
-case 15:return 25;
+case 15:return 18;
 break;
-case 16:return 26;
+case 16:return 23;
 break;
-case 17:return 27;
+case 17:return 28;
 break;
-case 18:return 30;
+case 18:return 25;
 break;
-case 19:return 31;
+case 19:return 21;
 break;
-case 20:return 34;
+case 20:return 56;
 break;
-case 21:return 35;
+case 21:return 7;
 break;
-case 22:return 36;
+case 22:return 9;
 break;
-case 23:return 37;
+case 23:return 'js';
 break;
-case 24:return 38;
+case 24:return 47;
 break;
-case 25:return 39;
+case 25:return 77;
 break;
-case 26:return 40;
+case 26:return 78;
 break;
-case 27:return 42;
+case 27:return 75;
 break;
-case 28:return 43;
+case 28:return 76;
 break;
-case 29:return 44;
+case 29:return 80;
 break;
-case 30:return 46;
+case 30:return 81;
 break;
-case 31:return 47;
+case 31:return 59;
 break;
-case 32:return 48;
+case 32:return 73;
 break;
-case 33:return 49;
+case 33:return 79; //"
 break;
-case 34:return 50;
+case 34:return 45;
 break;
-case 35:return 51;
+case 35:return 68;
 break;
-case 36:return 52;
+case 36:return 50;
 break;
-case 37:return 53;
+case 37:return 52;
 break;
-case 38:return 54;
+case 38:return 53;
 break;
-case 39:return 55;
+case 39:return 54;
 break;
-case 40:return 56;
+case 40:return 62;
 break;
-case 41:return 57;
+case 41:return 55;
 break;
-case 42:return 58;
+case 42:return 14;
 break;
-case 43:return 65;
+case 43:return 51;
 break;
-case 44:return 'NULL';
+case 44:return 60;
 break;
-case 45:return 'ANY';
+case 45:return 46;
 break;
-case 46:return 'ALL';
-break;
-case 47:return 67;
-break;
-case 48:return 68;
-break;
-case 49:return 'TRUE';
-break;
-case 50:return 'FALSE';
-break;
-case 51:return 66;
-break;
-case 52:return 'STRING';
-break;
-case 53:return 69;
-break;
-case 54:return 70;
-break;
-case 55:return 8;
-break;
-case 56:return 5;
+case 46:return 5;
 break;
 }
 },
-rules: [/^(?:\s+)/,/^(?:#[^\n]*)/,/^(?:\{)/,/^(?:\})/,/^(?:;)/,/^(?:server\b)/,/^(?:server_name\b)/,/^(?:user\b)/,/^(?:worker_processes\b)/,/^(?:worker_cpu_affinity\b)/,/^(?:error_log\b)/,/^(?:pid\b)/,/^(?:events\b)/,/^(?:accept_mutex\b)/,/^(?:worker_connections\b)/,/^(?:use\b)/,/^(?:epoll|poll|select\b)/,/^(?:dso\b)/,/^(?:load\b)/,/^(?:http\b)/,/^(?:sendfile\b)/,/^(?:tcp_nopush\b)/,/^(?:tcp_nodelay\b)/,/^(?:server_tokens\b)/,/^(?:server_info\b)/,/^(?:server_tag\b)/,/^(?:keepalive_timeout\b)/,/^(?:client_header_timeout\b)/,/^(?:send_timeout\b)/,/^(?:client_max_body_size\b)/,/^(?:client_body_buffer_size\b)/,/^(?:client_body_postpone_sending\b)/,/^(?:proxy_request_buffering\b)/,/^(?:fastcgi_request_buffering\b)/,/^(?:proxy_buffering\b)/,/^(?:proxy_buffer_size\b)/,/^(?:underscores_in_headers\b)/,/^(?:ignore_invalid_headers\b)/,/^(?:server_names_hash_max_size\b)/,/^(?:server_names_hash_bucket_size\b)/,/^(?:large_client_header_buffers\b)/,/^(?:proxy_connect_timeout\b)/,/^(?:proxy_read_timeout\b)/,/^(?:include\b)/,/^(?:null\b)/,/^(?:any\b)/,/^(?:all\b)/,/^(?:on\b)/,/^(?:off\b)/,/^(?:true\b)/,/^(?:false\b)/,/^(?:[0-9]+(?=\b))/,/^(?:"(?:[^\"]|\\")*")/,/^(?:(\d+[smdy]))/,/^(?:(\d+[kmg]))/,/^(?:([\/A-Za-z_\-0-9\.\*]+))/,/^(?:$)/],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56],"inclusive":true}}
+rules: [/^(?:\s+)/,/^(?:#[^\n]*)/,/^(?:;)/,/^(?:\{)/,/^(?:\})/,/^(?:\))/,/^(?:=)/,/^(?:if(?:\s*\())/,/^(?:include\b)/,/^(?:error_page\b)/,/^(?:rewrite\b)/,/^(?:default\b)/,/^(?:set(?=\s*$\s*))/,/^(?:http(?=\s*\{))/,/^(?:server(?=\s*\{))/,/^(?:upstream(?=\s+))/,/^(?:types(?=\s*\{))/,/^(?:map(?=\s+))/,/^(?:geo(?=\s+))/,/^(?:location\b)/,/^(?:server_name\b)/,/^(?:least_conn\b)/,/^(?:ip_hash\b)/,/^(?:js(?=\s*\{))/,/^(?:(access|error)_log\b)/,/^(?:null\b)/,/^(?:any|all\b)/,/^(?:on|true\b)/,/^(?:off|false\b)/,/^(?:[0-9]+[kmg](?=\b))/,/^(?:(([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+\/(-?(?:[0-9]|[1-9][0-9]+)))))/,/^(?:((localhost|[\.a-zA-Z0-9][\-a-zA-Z0-9]*\.[\.\-a-zA-Z0-9]*[a-zA-Z0-9]?|[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)(?::(-?(?:[0-9]|[1-9][0-9]+)))?)(?=\s+|))/,/^(?:[0-9]+(?=\b))/,/^(?:"(?:[^\"]|\\")*")/,/^(?:(\^~|~\*|~)(?=\s))/,/^(?:[A-Za-z\-]+\/[A-Za-z\-\+\.0-9]+)/,/^(?:[A-Za-z_]+=[A-Za-z_0-9]+)/,/^(?:(wss?:|https?:)\/\/(((localhost|[\.a-zA-Z0-9][\-a-zA-Z0-9]*\.[\.\-a-zA-Z0-9]*[a-zA-Z0-9]?|[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)(?::(-?(?:[0-9]|[1-9][0-9]+)))?)|[a-z0-9\-]+)(\/[\/A-Za-z_\-0-9\.\%\?\=\+]+)?)/,/^(?:(wss?:|https?:)\/\/([a-z0-9_\$\{\}\.\-]+)(\/[\/A-Za-z_\-0-9\.\%\?\=\+]+)?)/,/^(?:unix:([\/A-Za-z_\-0-9\.\*]+))/,/^(?:\$[A-Za-z_0-9]+)/,/^(?:@[A-Za-z_\-0-9]+)/,/^(?:[A-Za-z_0-9]+(?=\b[^\.\-]))/,/^(?:([\/A-Za-z_\-0-9\.\*]+))/,/^(?:~(?:[^\s;]+))/,/^(?:(?:[^\s;]+)(?:(?=\s*\)\s*\{)|[^\)](?=\s+\{)|(?=\s*\/)))/,/^(?:$)/],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46],"inclusive":true}}
 });
 return lexer;
 })();
@@ -808,9 +775,9 @@ return new Parser;
 
 
 if (typeof require !== 'undefined' && typeof exports !== 'undefined') {
-exports.parser = ncp;
-exports.Parser = ncp.Parser;
-exports.parse = function () { return ncp.parse.apply(ncp, arguments); };
+exports.parser = nginx;
+exports.Parser = nginx.Parser;
+exports.parse = function () { return nginx.parse.apply(nginx, arguments); };
 exports.main = function commonjsMain(args) {
     if (!args[1]) {
         console.log('Usage: '+args[0]+' FILE');
