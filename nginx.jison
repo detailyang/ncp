@@ -1,5 +1,7 @@
 /* description: Parses and executes mathematical expressions. */
 {{
+    var fs = require('fs');
+    var globsync = require('glob').sync;
     var ast = {
         'events': {},
         'dso': {},
