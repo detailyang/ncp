@@ -25,6 +25,7 @@ size                        \d+[kmg]
 
 // keyword
 "server" return 'server';
+"root" return 'root';
 "server_name" return 'server_name';
 "user"  return 'user';
 "worker_processes" return 'worker_processes';
@@ -38,6 +39,7 @@ size                        \d+[kmg]
 epoll|poll|select return 'iomethod';
 "dso" return 'dso';
 "load" return 'load';
+"location" return 'location';
 "http" return 'http';
 "sendfile" return 'sendfile';
 "tcp_nopush" return 'tcp_nopush';
@@ -103,7 +105,7 @@ ngxRootDirectiveList
     ;
 
 ngxRootDirective
-    : user LITERAL LITERAL ';' {
+    : user root LITERAL ';' {
         $$ = [$1, `${$2} ${$3}`];
     }
     | user LITERAL ';' {
@@ -271,16 +273,46 @@ ngxServerBlock
     }
     ;
 
-ngxServerDirectiveList
-    : ngxServerDirective
-    | ngxServerDirectiveList ngxServerDirective
+
+  ngxServerDirectiveList
+      : ngxServerDirective {
+        $$ = [$1];
+      }
+      | ngxServerDirectiveList ngxServerDirective {
+        $$ = $1.concat($2);
+      }
+      ;
+
+  ngxServerDirective
+      : server_name LITERAL ';' {
+        $$ = [$1, $2];
+      }
+      | ngxLocationBlock {
+        $$ = [$1];
+      }
+      ;
+
+ngxLocationBlock
+    : location  LITERAL '{' ngxLocationDirectiveList '}' {
+      $$  = [$1, $4];
+    }
     ;
 
-ngxServerDirective
-    : server_name LITERAL ';' {
+ngxLocationDirectiveList
+    : ngxLocationDirective {
+      $$ = [$1];
+    }
+    | ngxLocationDirectiveList ngxLocationDirective {
+      $$ = $1.concat([$2]);
+    }
+    ;
+
+ngxLocationDirective
+    : root LITERAL ';' {
       $$ = [$1, $2];
     }
     ;
+
 
 ngxInclude
     : include  LITERAL ';' {
