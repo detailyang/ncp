@@ -1,7 +1,7 @@
 /* description: Parses and executes mathematical expressions. */
 {{
     var fs = require('fs');
-    var ast = [];
+    var glob = require('glob');
 }}
 /* lexical grammar */
 %lex
@@ -89,7 +89,6 @@ epoll|poll|select return 'iomethod';
 %% /* language grammar */
 ngx
     : ngxRootDirectiveList EOF {
-        console.log(JSON.stringify($$));
         return $$;
     }
     ;
@@ -121,7 +120,8 @@ ngxRootDirective
     }
     | ngxEventsBlock
     | ngxDsoBlock
-#    | ngxHttpBlock
+    | ngxHttpBlock
+    | ngxServerBlock
     ;
 
 ngxEventsBlock
@@ -258,7 +258,7 @@ ngxHttpDirective
       $$ = [$1, $2];
     }
     | ngxInclude {
-      $$ = [$1];
+      $$ = $1;
     }
     | ngxServerBlock {
       $$ = [$1];
@@ -267,6 +267,7 @@ ngxHttpDirective
 
 ngxServerBlock
     : server '{' ngxServerDirectiveList '}' {
+      $$ = [$1, $3];
     }
     ;
 
@@ -277,11 +278,20 @@ ngxServerDirectiveList
 
 ngxServerDirective
     : server_name LITERAL ';' {
+      $$ = [$1, $2];
     }
     ;
 
 ngxInclude
     : include  LITERAL ';' {
+      var files = glob.sync($2, {silent: true, nonull: false});
+      var nodes = [];
+      for (var i in files) {
+        var buffer = fs.readFileSync(files[i]);
+        var data = yy.parser.parse(buffer.toString())[0];
+        nodes.push(data);
+      }
+      $$ = nodes;
     }
     ;
 
